@@ -1,0 +1,107 @@
+Break and Continue:
+===================
+- Brake the loop if condition is met
+- Continue the loop without executing the instruction.
+
+
+
+How to reuse code:
+==================
+- By creating a package or module on system working directory or anywhere in sys.path and importing it. 
+
+
+
+How to import libreries:
+=======================
+- import re (imports all)
+- from re import search (imports only search)
+- from re import search as my_search (imports only search wiyj alias)
+
+- import os
+os.path.join()
+
+- from os import path
+path.join()
+
+- from os import *
+path.join()
+
+- from os.path import join
+join()
+
+How does python search for libreries?
+=====================================
+When you call import, the Python interpreter searches through a set of directories for the name provided. 
+The list of directories that it searches is stored in sys.path and can be modified during run-time.
+
+When you start a Python interpreter, one of the things it creates automatically is a list that contains all of directories it will use to search for modules when importing. 
+This list is available in a variable named sys.path. Here is an example of printing out sys.path. Note that the empty '' entry means the current director.
+to check where the librery was ipportted from use:
+- my_file.__files__
+
+
+To modify Sys.path you can change viarable (On Linux):
+- env | grep PYTHON
+- export PYTHONPATH=/PATH/..
+
+
+
+__name__ Technique:
+===================
+- Divide executable part of the code and importable part of the code.
+- You execute part of the code without importing it or import it without executing it. 
+- When you import a package it runs the __init__.py file inside the package directory.
+- When you execute a package (e.g. python -m my_package) it executes the __main__.py file.
+- When you import a module it runs the entire file from top to bottom.
+- When you execute a module it runs the entire file from top-to-bottom and sets the __name__ variable to the string "__main__"
+- By default variabel __name__ = __main__
+- __name__ can be set on differnet ways depending if you excecute or import it
+
+
+i.e
+
+# Importable Section - Defining Fuction, constants or classes - Things we might resuse later
+def func():
+    print("func1")
+class SomeClass()
+    pass
+
+# Excecutable Section -  Set of thing that accomplishes what my program needs to accomplish.
+
+if __name__== "__main__":
+    print("Excecutable code")
+
+
+
+
+
+=====================================================
+library re =  Regular expression
+    re.search()
+    re.macth()
+
+
+
+
+
+Python String Methods:
+======================
+strip() = Remove spaces at the beginning and at the end of the string:
+splitlines() = Split a string into a list where each line is a list item:
+
+Python List/Array Methods
+========================
+
+List = []
+disc = {}
+
+
+
+list_of_dic = [
+    {
+
+    }
+]
+
+
+
