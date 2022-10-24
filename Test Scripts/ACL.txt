@@ -1,0 +1,9 @@
+Extended IP access list 150
+    10 deny tcp any any eq 443 (10 matches)
+    20 deny tcp any any eq ssh (27 matches)
+    30 permit ip host 10.1.1.1 any (3 matches)
+    40 permit ip host 10.2.2.2 any (27 matches)
+    50 permit ip 192.168.1.0 0.0.0.255 172.16.1.0 0.0.255.255 (100 matches)
+    60 permit icmp host 10.2.2.2 host 8.8.8.8 (27 matches)
+    70 permit ip 10.1.1.0 0.0.0.255 any (3 matches)
+    80 deny ip any any
