@@ -1,0 +1,63 @@
+hostname ld4-core-02
+!
+no ip domain lookup
+!
+interface Loopback0
+ ip address 10.5.0.2 255.255.255.255
+ ip ospf 10 area 0
+!
+interface GigabitEthernet0/0
+ ip address 10.250.250.3 255.255.255.254
+ duplex auto
+ speed auto
+ media-type rj45
+ no sh
+!
+interface GigabitEthernet0/1
+ ip address 10.5.250.1 255.255.255.254
+ ip ospf 10 area 0
+ duplex auto
+ speed auto
+ media-type rj45
+ no sh
+!
+interface GigabitEthernet0/2
+ ip address 10.5.250.8 255.255.255.254
+ ip ospf 10 area 0
+ duplex auto
+ speed auto
+ media-type rj45
+ no sh
+!
+interface GigabitEthernet0/3
+ ip address 10.5.250.6 255.255.255.254
+ ip ospf 10 area 0
+ duplex auto
+ speed auto
+ media-type rj45
+ no sh
+
+router ospf 10
+ prefix-suppression
+!
+router bgp 64515
+ bgp router-id 10.5.0.2
+ bgp log-neighbor-changes
+ bgp aggregate-timer 0
+ network 10.5.0.2 mask 255.255.255.255
+ aggregate-address 10.5.0.0 255.255.0.0 summary-only
+ neighbor RR-iBGP peer-group
+ neighbor RR-iBGP remote-as 12345
+ neighbor RR-iBGP update-source Loopback0
+ neighbor RR-iBGP next-hop-self
+ neighbor 10.5.0.3 peer-group RR-iBGP
+ neighbor 10.5.0.4 peer-group RR-iBGP
+ neighbor 10.250.250.3 remote-as 64511
+ 
+!
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ login
+ transport input none
